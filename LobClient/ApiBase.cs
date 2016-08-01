@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Lob.Serialization;
@@ -11,7 +12,8 @@ namespace Lob
     abstract class ApiBase
     {
         private const string ApiEndpoint = "https://api.lob.com/v1/";
-        //private const string ApiEndpoint = "http://localhost:9000/";
+
+        private static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         private readonly ILobClient lobClient;
 
@@ -61,7 +63,7 @@ namespace Lob
                 client.DefaultRequestHeaders.Add("Lob-Version", lobClient.ApiVersion);
             }
 
-            client.DefaultRequestHeaders.Add("User-Agent", "Lob/v1 .NET/1.0.0.0");
+            client.DefaultRequestHeaders.Add("User-Agent", $"Lob/v1 .NET/{Version}");
         }
     }
 }
