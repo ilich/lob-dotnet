@@ -24,6 +24,30 @@ namespace Lob
             this.lobClient = lobClient;
         }
 
+        protected async Task<T> Get<T>(string requestUri)
+        {
+            using (var client = new HttpClient())
+            {
+                SetupClient(client);
+
+                var response = await client.GetAsync(requestUri);
+                var statusCode = (int)response.StatusCode;
+                if (statusCode == 200)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<T>(json);
+                    return result;
+                }
+                else
+                {
+                    throw new LobClientException(
+                        response.RequestMessage.RequestUri,
+                        statusCode,
+                        response.ReasonPhrase);
+                }
+            }
+        }
+
         protected async Task<T> Post<T, U>(string requestUri, U request)
         {
             using (var client = new HttpClient())

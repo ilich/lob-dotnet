@@ -6,32 +6,12 @@ using NUnit.Framework;
 namespace Lob.Tests
 {
     [TestFixture]
-    public class AddressTests
+    public class AddressTests : LobClientTests
     {
-        private ILobClient client;
-
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            var apiKey = ConfigurationManager.AppSettings["ApiKey"];
-            if (string.IsNullOrEmpty(apiKey))
-            {
-                throw new ConfigurationErrorsException("ApiKey");
-            }
-
-            var apiVersion = ConfigurationManager.AppSettings["ApiVersion"];
-            if (string.IsNullOrEmpty(apiVersion))
-            {
-                throw new ConfigurationErrorsException("ApiVersion");
-            }
-
-            client = new LobClient(apiKey, apiVersion);
-        }
-
         [Test]
         public async Task VerifyAddress()
         {
-            var response = await client.Address.VerifyAsync(new AddressVerificationRequest
+            var response = await LobClient.Address.VerifyAsync(new AddressVerificationRequest
             {
                 AddressLine1 = "185 Berry Street",
                 City = "San Francisco",

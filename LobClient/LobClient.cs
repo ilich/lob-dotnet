@@ -2,15 +2,15 @@
 {
     public class LobClient : ILobClient
     {
-        private const string DefaultApiVersion = "2016-06-30";
-
-        public LobClient(string apiKey, string apiVersion = DefaultApiVersion)
+        public LobClient(string apiKey, string apiVersion = "")
         {
             ApiKey = apiKey;
             ApiVersion = ApiVersion;
         }
 
         public IAddress Address => new Address(this);
+
+        public IResources Resources => new Resources(this);
 
         public string ApiKey { get; set; }
 

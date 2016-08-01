@@ -53,7 +53,10 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="ApiBase.cs" />
+    <Compile Include="IResources.cs" />
     <Compile Include="LobClientException.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="Responses\CountriesResponse.cs" />
     <Compile Include="Serialization\FormUrlAttribute.cs" />
     <Compile Include="Serialization\FormUrlEncodedContentSerializer.cs" />
     <Compile Include="IAddress.cs" />

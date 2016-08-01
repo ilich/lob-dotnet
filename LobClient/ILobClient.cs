@@ -7,5 +7,7 @@
         string ApiVersion { get; set; }
 
         IAddress Address { get; }
+
+        IResources Resources { get; }
     }
 }
