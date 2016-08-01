@@ -57,6 +57,7 @@
     <Compile Include="LobClientException.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="Responses\CountriesResponse.cs" />
+    <Compile Include="Responses\StatesResponse.cs" />
     <Compile Include="Serialization\FormUrlAttribute.cs" />
     <Compile Include="Serialization\FormUrlEncodedContentSerializer.cs" />
     <Compile Include="IAddress.cs" />

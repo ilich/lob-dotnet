@@ -16,5 +16,11 @@ namespace Lob
             var countries = await Get<CountriesResponse>("countries");
             return countries.Countries ?? new Country[0];
         }
+
+        public async Task<IEnumerable<State>> GetStatesAsync()
+        {
+            var states = await Get<StatesResponse>("states");
+            return states.States ?? new State[0];
+        }
     }
 }

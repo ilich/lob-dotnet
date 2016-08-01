@@ -7,5 +7,7 @@ namespace Lob
     public interface IResources
     {
         Task<IEnumerable<Country>> GetCountriesAsync();
+
+        Task<IEnumerable<State>> GetStatesAsync();
     }
 }
